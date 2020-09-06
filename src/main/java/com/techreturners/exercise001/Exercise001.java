@@ -1,26 +1,45 @@
 package com.techreturners.exercise001;
-
+import java.util.*; 
 import java.util.List;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Exercise001 {
     public String capitalizeWord(String word) {
-        // Add your code here
-        return "";
+        
+       return word.substring(0, 1).toUpperCase()+ word.substring(1);
+       
     }
 
     public String generateInitials(String firstName, String lastName) {
-        return "";
+
+        return firstName.substring(0,1).toUpperCase()+"."+lastName.substring(0,1).toUpperCase();
     }
 
     public double addVat(double originalPrice, double vatRate) {
-        return 0.0;
+   
+       double result =originalPrice + (originalPrice*vatRate/100);
+       BigDecimal bd  = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP);
+       return bd.doubleValue();
+
+        
     }
 
     public String reverse(String sentence) {
-        return "";
+        String result="";
+        for(int i =sentence.length()-1; i>=0; i--){
+            result = result+sentence.charAt(i);    
+        } 
+        return result;
     }
 
     public int countLinuxUsers(List<User> users) {
-        return 0;
+        int count =0;
+        for(User us : users ){
+            if(us.getType()=="Linux"){
+                count++;
+            }
+        }
+        return count;
     }
 }
